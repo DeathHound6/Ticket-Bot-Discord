@@ -1,0 +1,8 @@
+# genberal ignore
+*.env
+node_modules/
+package-lock.json
+
+# glitch
+.glitch-assets
+shrinkwrap.yaml
