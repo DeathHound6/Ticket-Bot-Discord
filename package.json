@@ -1,0 +1,22 @@
+{
+  "name": "ticket-bot-discord",
+  "version": "0.0.1",
+  "description": "A multi-guild ticket bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm i && node ."
+  },
+  "dependencies": {
+    "discord.js": "github:discordjs/discord.js",
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.12.11",
+    "require-all": "^3.0.0"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": {
+    "url": "https://github.com/DeathHound6/Ticket-Bot-Discord"
+  },
+  "license": "MIT"
+}
