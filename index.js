@@ -1,3 +1,5 @@
+Error.stackTraceLimit = 2;
+
 const { Bot } = require("./classes.js");
 const { Intents } = require("discord.js");
 const req = require("require-all");

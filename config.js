@@ -5,7 +5,7 @@ class Config {
   constructor() { }
 
   /**
-   * 
+   * Returns basic configuration explicitly for the Discord client
    */
   get bot() {
     return {
@@ -17,11 +17,21 @@ class Config {
   }
 
   /**
+   * 
+   */
+  get channels() {
+    return {
+      "errors": "848149962483302421"
+    }
+  }
+
+  /**
    * Returns colour hex codes for embed use
    */
   get colours() {
     return {
-      red: "#FF0000"
+      red: "#FF0000",
+      yellow: "#FEDD00"
     }
   }
 

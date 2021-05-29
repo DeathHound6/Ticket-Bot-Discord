@@ -1,5 +1,5 @@
 const { Client, Collection, ClientOptions } = require("discord.js");
-const events = require("events");
+const EventEmitter = require("events");
 
 /**
  * A custom made Discord client
@@ -12,6 +12,7 @@ class Bot extends Client {
     super(clientOptions);
     this.commands = new Collection();
     this.config = new (require("./config.js"))();
+    this.db = require("./db.js");
   }
 }
 
@@ -61,7 +62,7 @@ class Event {
    * @param {Object} opts Options for the Event
    * @param {String} opts.name 
    * @param {String} opts.emit
-   * @param {events} opts.emitter
+   * @param {EventEmitter} opts.emitter
    */
   constructor(client, { name, emit = "on", emitter = client }) {
     if (!(client instanceof Bot)) throw new TypeError("Event clients must be an instance of the Bot class");
@@ -74,7 +75,7 @@ class Event {
       throw new TypeError("Event emits must be either `on` or `once`");
     this.emit = emit.toLowerCase();
 
-    if (!(emitter instanceof events)) throw new TypeError("Event emitter must be an instance of an EventEmitter");
+    if (!(emitter instanceof EventEmitter)) throw new TypeError("Event emitter must be an instance of an EventEmitter");
     this.emitter = emitter;
   }
 }

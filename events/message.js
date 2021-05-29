@@ -17,12 +17,15 @@ class MessageEvent extends Event {
   }
   /**
    * Run the listener
-   * @param {Message} message 
+   * @param {Message} message
    */
   async run(message) {
     if (message.channel.type == "dm") return;
 
-    const prefix = (await this.client.db.settings.findOne({ guild: message.guild.id }))?.prefix || this.client.config.bot.prefix;
+    let settings = await this.client.db.settings.findOne({ guild: message.guild.id });
+    if (!settings) settings = await new this.client.db.settings({ guild: message.guild.id, prefix: this.client.config.bot.prefix }).save();
+
+    const prefix = settings.prefix;
     if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
 
     const args = message.content.slice(prefix.length).split(/ +/g);
